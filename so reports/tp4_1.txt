@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find -executable -type f 
+find -executable -type f |wc -l

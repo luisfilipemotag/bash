@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo "A"
+read A
+echo "B -> bigger than A "
+read B
+
+if [ "$B" -ge "$A" ]; then rand=`shuf -i $A-$B -n 1` 
+else rand = 0
+fi
+
+echo "wich number you choose ? "
+while read asw 
+if [ "$asw" -eq "$rand" ]; 
+then 
+echo "Correct !!! "; 
+break;
+fi
+do
+echo "Erro wich number you choose ?"
+done

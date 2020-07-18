@@ -1,0 +1,63 @@
+@echo off
+cls
+:BEGIN 
+echo.
+choice /c 12345 /n /m "Numbers - 1 ; Directories - 2; Create - 3; Files - 4 ;End - 5 "
+
+IF ERRORLEVEL 5 GOTO five
+
+IF ERRORLEVEL 4 GOTO four 
+
+IF ERRORLEVEL 3 GOTO three
+
+IF ERRORLEVEL 2 GOTO two
+
+IF ERRORLEVEL 1 GOTO one 
+
+
+:one 
+echo N ?
+SET /P a=
+echo M ?
+SET /P b=
+SET /A c = %a% + %b%
+echo %c%
+
+
+
+GOTO BEGIN
+:two 
+
+echo wich directory ?
+SET /P d=
+echo wich extension ?
+SET /P ex=
+if NOT exist D:\copies  mkdir D:\copies
+
+XCOPY %d%\*.%ex% D:\copies /i
+
+
+GOTO BEGIN
+:three 
+
+set arg1=%1
+set arg2=%2
+set arg3=%3
+
+echo %arg1%
+cd %arg2%
+COPY CON %arg3%
+
+
+GOTO BEGIN
+:four
+
+echo name of the file ?
+set /P file=
+dir %CD% >> %file%.txt 
+echo done
+GOTO BEGIN
+:five
+GOTO END
+PAUSE
+:END
